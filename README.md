@@ -46,6 +46,53 @@ Run the local MCP server:
 cargo run -- mcp
 ```
 
+## CI and releases
+
+The repository includes GitHub Actions workflows for validation and tagged
+releases. The CI workflow builds and tests the project on Linux, Windows, and
+macOS. The release workflow builds tagged binaries and uploads them to GitHub
+Releases.
+
+### CI workflow
+
+The CI workflow runs on pushes to `main` and on pull requests. It currently
+builds these targets:
+
+- `x86_64-unknown-linux-gnu`
+- `x86_64-pc-windows-msvc`
+- `aarch64-apple-darwin`
+
+Each matrix job runs:
+
+1. `cargo test --quiet --target <target>`
+2. `cargo build --release --target <target>`
+
+### Release workflow
+
+The release workflow runs when you push a tag that matches `v*`. For example:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The workflow uploads these release assets:
+
+- Linux archive: `search-mcp-gateway-x86_64-unknown-linux-gnu.tar.gz`
+- Windows archive: `search-mcp-gateway-x86_64-pc-windows-msvc.zip`
+- macOS archive: `search-mcp-gateway-aarch64-apple-darwin.tar.gz`
+- `SHA256SUMS`
+
+### Dependency updates
+
+The repository includes `dependabot.yml` for two update streams:
+
+- GitHub Actions versions
+- Cargo dependencies
+
+This keeps the workflow actions and Rust dependencies moving forward through
+normal pull requests instead of silently drifting out of date.
+
 ## Configuration
 
 Configuration is optional. If you don't provide a config file, the gateway
