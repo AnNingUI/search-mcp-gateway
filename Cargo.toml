@@ -1,0 +1,22 @@
+[package]
+name = "search-mcp-gateway"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5.39", features = ["derive"] }
+rmcp = { version = "1.3.0", features = ["server", "macros", "transport-io", "schemars"] }
+reqwest = { version = "0.12.15", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+scraper = "0.24.0"
+schemars = "1.0.4"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+thiserror = "2.0.12"
+tokio = { version = "1.47.1", features = ["rt-multi-thread"] }
+toml = "0.8.22"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.20", features = ["env-filter", "fmt"] }
+url = "2.5.7"
+
+[dev-dependencies]
+tempfile = "3.23.0"
