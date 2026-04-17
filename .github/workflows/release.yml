@@ -69,7 +69,7 @@ jobs:
           Compress-Archive -Path $binaryPath -DestinationPath "dist\$archiveName"
 
       - name: Upload packaged artifact
-        uses: actions/upload-artifact@v7.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: release-${{ matrix.target }}
           path: dist/*
