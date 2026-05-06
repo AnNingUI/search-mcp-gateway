@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-clap = { version = "4.5.39", features = ["derive"] }
+clap = { version = "4.6.1", features = ["derive"] }
 rmcp = { version = "1.5.0", features = ["server", "macros", "transport-io", "schemars"] }
 reqwest = { version = "0.12.15", default-features = false, features = ["blocking", "json", "rustls-tls"] }
 scraper = "0.26.0"
